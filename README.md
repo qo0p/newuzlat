@@ -28,6 +28,22 @@ A keyboard layout you install once (no background program, nothing to run).
 After installing, the layout appears as **UZB** in the taskbar; switch to it
 with **Win + Space**.
 
+## macOS
+
+A keyboard layout (`.keylayout`) that uses the **Option (⌥)** key — the Mac
+equivalent of the AltGr layer. No background program.
+
+- **Layout:** [`macos/UzbekLatin.keylayout`](macos/UzbekLatin.keylayout) — copy
+  into `~/Library/Keyboard Layouts/`, log out/in, then enable **Uzbek Latin**
+  in System Settings → Keyboard → Input Sources.
+- **Step-by-step guides:**
+  [English](macos/README.md) ·
+  [Русский](macos/README.ru.md) ·
+  [Oʻzbekcha](macos/README.uz.md)
+
+On macOS the letters are typed with **Option + S / C / G / O** (Shift for
+capitals).
+
 ## Ubuntu / Linux
 
 A custom XKB mapping (Ubuntu 24.04, GNOME on Wayland) that adds the AltGr layer
