@@ -14,7 +14,23 @@ In every case you hold **AltGr (the right Alt key)** and press a letter:
 
 Every other key types exactly as on the normal US layout.
 
+## Download
+
+**Windows 10/11 (64-bit): [UzbekLatin.msi](https://github.com/qo0p/newuzlat/releases/latest/download/UzbekLatin.msi)**
+— one installer for both Windows layouts. Run it, choose the language
+(Özbekça / Русский / English) and the layout, then restart the computer. The
+layout is added to your keyboard list; switch to it with **Win + Space**.
+
+- SHA-256 checksum: [UzbekLatin.msi.sha256](https://github.com/qo0p/newuzlat/releases/latest/download/UzbekLatin.msi.sha256)
+  (check with `Get-FileHash .\UzbekLatin.msi -Algorithm SHA256`)
+- All versions: [Releases](https://github.com/qo0p/newuzlat/releases) ·
+  how the installer is built: [`windows/installer/`](windows/installer/)
+- macOS and Linux: see below.
+
 ## Windows
+
+The single installer above is the easiest way. The per-layout MSKLC packages
+below install the same layouts.
 
 A keyboard layout you install once (no background program, nothing to run).
 
