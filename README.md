@@ -28,6 +28,31 @@ A keyboard layout you install once (no background program, nothing to run).
 After installing, the layout appears as **UZB** in the taskbar; switch to it
 with **Win + Space**.
 
+### Windows — "Direct" variant (no AltGr)
+
+An alternative layout, **Uzbek Latin Direct**, puts the letters on their own
+keys so each is a single key press:
+
+| Key | Alone | + Shift |
+|-----|-------|---------|
+| `[` | ğ     | Ğ       |
+| `]` | ö     | Ö       |
+| `;` | ş     | Ş       |
+| `'` | ç     | Ç       |
+| `\` | ;     | :       |
+
+The characters these keys normally type (`[ ] { } ' " \ |`) move to AltGr on
+the same key. Every other key is standard US.
+
+- **Installer:** [`windows/uzlatdir/`](windows/uzlatdir/) — run `setup.exe` as
+  administrator, then reboot.
+- **Step-by-step guides:**
+  [English](windows/INSTALL-direct.md) ·
+  [Русский](windows/INSTALL-direct.ru.md) ·
+  [Oʻzbekcha](windows/INSTALL-direct.uz.md)
+
+Both Windows layouts can be installed side by side.
+
 ## macOS
 
 A keyboard layout (`.keylayout`) that uses the **Option (⌥)** key — the Mac
