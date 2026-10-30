@@ -34,9 +34,9 @@ How it works (`make_msi.py`):
 
 **All UI text (Uzbek / Russian / English) is in `STRINGS` in `make_msi.py`.**
 The Uzbek text uses the new Latin alphabet (ö ğ ş ç). To hold Uzbek and
-Russian in one MSI, the database uses code page 65001 (UTF-8). Don't use
-`[ ] {` in the texts: the MSI treats them as formatting codes (the build stops
-with an error if you do).
+Russian in one MSI, the database uses code page 65001 (UTF-8). `[ ] { }` in
+the texts are fine: the build escapes them as `[\[]` etc., because the MSI
+otherwise treats them as formatting codes.
 
 ## What it installs
 

@@ -59,10 +59,11 @@ qolganlari oddiy US tartibidagidek yozadi:
 | `]`   | ö    | Ö       | ]                  | }               |
 | `;`   | ş    | Ş       | —                  | —               |
 | `'`   | ç    | Ç       | '                  | "               |
-| `\`   | ;    | :       | \                  | \|              |
+| `\`   | ;    | :       | "                  | \|              |
+| `/`   | /    | ?       | \                  | —               |
 
 CapsLock ham ğ ö ş ç ni bosh harf qiladi. Bu tugmalar odatda yozadigan belgilar
-(`[ ] { } ' " \ |`) oʻsha tugmaning **oʻng Alt (AltGr)** qatlamida turadi.
+(`[ ] { } ' " |`) oʻsha tugmaning **oʻng Alt (AltGr)** qatlamida turadi. `\` belgisi **AltGr + /** da.
 Oddiy inglizcha yozish uchun **Win + Space** bilan **ENG** ga qayting.
 
 ## Oʻchirish

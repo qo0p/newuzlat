@@ -57,8 +57,8 @@ keys so each is a single key press:
 | `'` | ç     | Ç       |
 | `\` | ;     | :       |
 
-The characters these keys normally type (`[ ] { } ' " \ |`) move to AltGr on
-the same key. Every other key is standard US.
+The characters these keys normally type (`[ ] { } ' " |`) move to AltGr on
+the same key; AltGr + `\` types `"` and `\` is on AltGr + `/`. Every other key is standard US.
 
 - **Installer:** [`windows/uzlatdir/`](windows/uzlatdir/) — run `setup.exe` as
   administrator, then reboot.

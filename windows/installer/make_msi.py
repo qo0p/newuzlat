@@ -25,13 +25,19 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "UzbekLatin.msi"
 WORK = HERE / "build"
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 UPGRADE_CODE = "D74A6185-9BE0-4D69-9479-B7A8F5231B5E"
 MANUFACTURER = "Azamat Musakhanov"
 PRODUCT = "Uzbek Latin Keyboard"
 CODEPAGE = 65001
 
 LANGS = ("uz", "ru", "en")          # first one is the default UI language
+
+
+def keys(text):
+    # no line breaks inside "AltGr + \ = x"
+    return text.replace(" = ", " = ").replace("AltGr + ", "AltGr + ")
+
 
 STRINGS = {
     "T_TITLE": (
@@ -46,10 +52,16 @@ STRINGS = {
         "Uzbek Latin (AltGr) — dasturçilar uçun",
         "Uzbek Latin (AltGr) — для программистов",
         "Uzbek Latin (AltGr) — for programmers"),
-    "T_DIRECT_DESC": (
-        "ğ ö ş ç harflari alohida tugmalarda, AltGr kerak emas. Tavsiya etiladi.",
-        "Буквы ğ ö ş ç на отдельных клавишах, AltGr не нужен. Рекомендуется.",
-        "The letters ğ ö ş ç are on their own keys, no AltGr needed. Recommended."),
+    "T_DIRECT_DESC": tuple(map(keys, (
+        "Harflar alohida tugmalarda: [ = ğ, ] = ö, ; = ş, ' = ç (Shift bilan bosh harf), "
+        "\\ = ; va :. AltGr: [ ] { } ' \" | öşa tugmalarda, AltGr + \\ = \", AltGr + / = \\. "
+        "Tavsiya etiladi.",
+        "Буквы на отдельных клавишах: [ = ğ, ] = ö, ; = ş, ' = ç (с Shift заглавные), "
+        "\\ = ; и :. AltGr: [ ] { } ' \" | на тех же клавишах, AltGr + \\ = \", AltGr + / = \\. "
+        "Рекомендуется.",
+        "Letters on their own keys: [ = ğ, ] = ö, ; = ş, ' = ç (Shift for capitals), "
+        "\\ = ; and :. AltGr: [ ] { } ' \" | on the same keys, AltGr + \\ = \", AltGr + / = \\. "
+        "Recommended."))),
     "T_ALTGR_DESC": (
         "ş ç ğ ö harflari öng Alt (AltGr) + S, C, G, O bilan yoziladi. "
         "Qavslar va tiniş belgilari öz joyida qoladi.",
@@ -204,6 +216,11 @@ def ev(dlg, control, event, arg, cond="1", order=1):
     events.append((dlg, control, event, arg, cond, order))
 
 
+def msi_escape(text):
+    # SetProperty arguments are Formatted: [\x] gives a literal x
+    return "".join(f"[\\{c}]" if c in "[]{}" else c for c in text)
+
+
 def line(dlg):
     ctl(dlg, "Line", "Line", 0, 234, 370, 0, LINE)
 
@@ -221,7 +238,7 @@ def build_ui():
         radios.append(("LANG", n, val, 0, 24 * (n - 1), 290, 18, label, None))
     for i, lang in enumerate(LANGS):
         for key, vals in STRINGS.items():
-            ev("LangDlg", "Next", f"[{key}]", vals[i], f'LANG = "{lang}"', 1)
+            ev("LangDlg", "Next", f"[{key}]", msi_escape(vals[i]), f'LANG = "{lang}"', 1)
     ev("LangDlg", "Next", "NewDialog", "LayoutDlg", "NOT Installed", 2)
     ev("LangDlg", "Next", "NewDialog", "MaintDlg", "Installed", 2)
     ev("LangDlg", "Cancel", "EndDialog", "Exit")
@@ -343,10 +360,9 @@ def check_strings():
     for key, vals in STRINGS.items():
         assert len(vals) == len(LANGS), key
         for lang, v in zip(LANGS, vals):
-            if "[" in v or "]" in v or "{" in v:
-                sys.exit(f"{key}/{lang}: [ ] {{ are MSI formatting characters, don't use them")
-            if len(v) > 255:
-                sys.exit(f"{key}/{lang}: {len(v)} chars, MSI limit for this text is 255")
+            if len(msi_escape(v)) > 255:
+                sys.exit(f"{key}/{lang}: {len(msi_escape(v))} chars (with [\\x] escapes), "
+                         "MSI limit for this text is 255")
 
 
 def main():

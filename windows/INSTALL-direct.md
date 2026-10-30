@@ -52,10 +52,11 @@ exactly as on the normal US layout:
 | `]`  | ö     | Ö       | ]                   | }               |
 | `;`  | ş     | Ş       | —                   | —               |
 | `'`  | ç     | Ç       | '                   | "               |
-| `\`  | ;     | :       | \                   | \|              |
+| `\`  | ;     | :       | "                   | \|              |
+| `/`  | /     | ?       | \                   | —               |
 
 CapsLock also capitalizes ğ ö ş ç. The characters these keys normally type
-(`[ ] { } ' " \ |`) are on **Right Alt (AltGr)** of the same key. Switch back
+(`[ ] { } ' " |`) are on **Right Alt (AltGr)** of the same key. `\` is on **AltGr + /**. Switch back
 to **ENG** with Win + Space for ordinary English typing.
 
 ## Uninstall
